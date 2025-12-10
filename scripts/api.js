@@ -1,6 +1,7 @@
 import { MODULE_ID } from "./module.js";
 import { openElementSelector } from "./elementDialog.js";
 import { openMacroBindingDialog } from "./macroDialog.js";
+import { openKineticistDialog } from "./kineticistDialog.js";
 import {
   isKineticist,
   getElementalGates,
@@ -25,11 +26,19 @@ export function setupAPI() {
     removeAnimationMacro,
 
     // Dialog functions
+    openKineticistDialog,
     openElementSelector,
     openMacroBindingDialog,
 
     // Module ID
     MODULE_ID
+  };
+
+  // Also expose main dialog as a shortcut
+  game.pf2eKineticistAssistant.dialog = {
+    open: openKineticistDialog,
+    openElements: openElementSelector,
+    openMacroBinding: openMacroBindingDialog
   };
 
   console.log("PF2e Kineticist Assistant | API registered");

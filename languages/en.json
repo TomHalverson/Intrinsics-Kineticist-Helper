@@ -10,12 +10,20 @@
       "noImpulses": "No impulses found"
     },
     "buttons": {
+      "openDialog": "Kineticist Menu",
       "selectElements": "Select Elements",
       "save": "Save",
       "cancel": "Cancel",
       "remove": "Remove"
     },
+    "keywords": {
+      "useAbility": "Use Ability",
+      "bindMacro": "Bind Animation"
+    },
     "dialog": {
+      "kineticist": {
+        "title": "Kineticist Abilities"
+      },
       "elementSelector": {
         "title": "Select Elemental Gates",
         "description": "Select the elemental gates your Kineticist has access to:"

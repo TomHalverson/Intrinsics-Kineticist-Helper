@@ -10,6 +10,7 @@ import {
 } from "./misc.js";
 import { openElementSelector } from "./elementDialog.js";
 import { openMacroBindingDialog } from "./macroDialog.js";
+import { openKineticistDialog } from "./kineticistDialog.js";
 
 export function setupHooks() {
   // Hook into character sheet rendering
@@ -21,7 +22,26 @@ export function setupHooks() {
       return;
     }
 
+    console.log("PF2e Kineticist Assistant | Rendering UI for", actor.name);
     await renderKineticistUI(actor, html);
+  });
+
+  // Hook into chat messages for macro detection
+  const KINETICIST_ACTIONS = {
+    "Elemental Blast": "blast",
+    "Impulse": "impulse",
+  };
+
+  Hooks.on("createChatMessage", async function (msg, _status, userid) {
+    if (game.user.id !== userid) return;
+
+    const itemName = msg?.item?.name || "";
+    const traits = msg?.item?.system?.traits?.value || [];
+
+    // Check if this is a kineticist ability
+    if (traits.includes("impulse") || itemName.toLowerCase().includes("elemental blast")) {
+      // We could add auto-animation triggering here if desired
+    }
   });
 }
 
@@ -53,7 +73,10 @@ async function renderKineticistUI(actor, html) {
 
   // Build buttons
   let buttonsHtml = `
-    <div class="kineticist-buttons" style="margin-top:1em; display: flex; gap: 1em; justify-content: flex-end;">
+    <div class="kineticist-buttons" style="margin-top:1em; display: flex; gap: 1em; justify-content: flex-end; flex-wrap: wrap;">
+      <button type="button" class="open-kineticist-dialog-btn">
+        <i class='fa-solid fa-hand-sparkles'></i> ${localize("buttons.openDialog") || "Kineticist Menu"}
+      </button>
       <button type="button" class="select-elements-btn">
         <i class='fa-solid fa-atom'></i> ${localize("buttons.selectElements") || "Select Elements"}
       </button>
@@ -241,6 +264,11 @@ function getActionCostIcon(actionCost) {
 
 function attachEventListeners(html, actor, impulses, blasts) {
   const fieldset = html.find(".kineticist-fieldset");
+
+  // Open Kineticist Dialog button
+  fieldset.find(".open-kineticist-dialog-btn").on("click", async () => {
+    await openKineticistDialog();
+  });
 
   // Select elements button
   fieldset.find(".select-elements-btn").on("click", async () => {

@@ -60,20 +60,59 @@ A FoundryVTT module for Pathfinder 2e that provides enhanced management and anim
 2. **Open a Kineticist Character**: The module will automatically detect if a character is a Kineticist
 3. **Configure Elements**: If auto-detection doesn't work, click "Select Elements" to manually choose your elemental gates
 
-### Using Impulses and Blasts
+### Using the Kineticist Menu
 
-- **Left Click** on any impulse or blast icon to use it
-- **Right Click** on any ability to bind an animation macro
-- **Hover** over any ability to see its description and details
+There are three ways to access your Kineticist abilities:
+
+1. **Via Character Sheet**: Open your character sheet and click the "Kineticist Menu" button in the Kineticist Management section
+2. **Via Macro**: Create a macro with the code `game.pf2eKineticistAssistant.dialog.open()` and drag it to your hotbar
+3. **Via API**: Use the console or another macro to call the dialog
+
+### Using the Dialog
+
+1. **Select an Ability**: Click on any impulse or blast in the list
+2. **Use Ability**: Click "Use Ability" to activate it (and trigger any bound animation)
+3. **Bind Animation**: Click "Bind Animation" to assign an animation macro to the selected ability
+4. **Right-Click Shortcut**: Right-click any ability row to quickly open the macro binding dialog
+
+### Character Sheet Integration
+
+The module adds a "Kineticist Management" section to your character sheet with:
+- Visual display of your elemental gates
+- Quick-access icons for all blasts and impulses
+- Buttons to open the main menu and element selector
+- Click icons to use abilities directly from the sheet
+- Right-click icons to bind animations
 
 ### Binding Animation Macros
 
-1. Right-click on any impulse or blast icon
-2. Select a macro from the dropdown menu
-3. Click "Save"
-4. The macro will now execute whenever you use that ability
+1. **From Dialog**: Select an ability and click "Bind Animation"
+2. **From Sheet**: Right-click any ability icon on the character sheet
+3. **Choose a Macro**: Select from your available macros
+4. **Test It**: Use the ability - the animation will play automatically!
 
-### Example Macro
+### Creating Hotbar Macros
+
+For quick access, create these macros and drag them to your hotbar:
+
+**Kineticist Menu Macro:**
+```javascript
+game.pf2eKineticistAssistant.dialog.open();
+```
+
+**Select Elements Macro:**
+```javascript
+const token = canvas.tokens.controlled[0];
+if (token) {
+  game.pf2eKineticistAssistant.dialog.openElements(token.actor);
+} else {
+  ui.notifications.warn("Please select your token first!");
+}
+```
+
+See [MACROS.md](MACROS.md) for more examples including animation macros and quick-use ability macros.
+
+### Example Animation Macro
 
 Here's a simple example macro you could bind to a Fire Blast:
 
@@ -81,15 +120,17 @@ Here's a simple example macro you could bind to a Fire Blast:
 // Example: Fire Blast Animation
 if (game.modules.get("sequencer")?.active) {
   const token = canvas.tokens.controlled[0];
-  const target = Array.from(game.user.targets)[0];
+  const targets = Array.from(game.user.targets);
 
-  if (token && target) {
-    new Sequence()
-      .effect()
-      .file("jb2a.fire_bolt.orange")
-      .atLocation(token)
-      .stretchTo(target)
-      .play();
+  if (token && targets.length > 0) {
+    for (const target of targets) {
+      new Sequence()
+        .effect()
+        .file("jb2a.fire_bolt.orange")
+        .atLocation(token)
+        .stretchTo(target)
+        .play();
+    }
   }
 }
 ```
@@ -107,10 +148,22 @@ The module adds a new "Kineticist Management" section to your character sheet, w
 
 The module exposes an API for advanced users and other modules:
 
-```javascript
-// Access the API
-game.pf2eKineticistAssistant.api
+### Dialog API (Simplified)
 
+```javascript
+// Open the main Kineticist abilities dialog
+game.pf2eKineticistAssistant.dialog.open()
+
+// Open element selector dialog
+game.pf2eKineticistAssistant.dialog.openElements(actor)
+
+// Open macro binding dialog
+game.pf2eKineticistAssistant.dialog.openMacroBinding(actor, itemId, itemUuid)
+```
+
+### Full API
+
+```javascript
 // Check if an actor is a Kineticist
 game.pf2eKineticistAssistant.api.isKineticist(actor)
 
@@ -128,7 +181,8 @@ game.pf2eKineticistAssistant.api.getAnimationMacro(actor, itemId)
 game.pf2eKineticistAssistant.api.setAnimationMacro(actor, itemId, macroId)
 game.pf2eKineticistAssistant.api.removeAnimationMacro(actor, itemId)
 
-// Open dialogs
+// Open dialogs (direct access)
+game.pf2eKineticistAssistant.api.openKineticistDialog()
 game.pf2eKineticistAssistant.api.openElementSelector(actor)
 game.pf2eKineticistAssistant.api.openMacroBindingDialog(actor, itemId, itemUuid)
 ```
