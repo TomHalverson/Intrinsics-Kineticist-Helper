@@ -1,0 +1,147 @@
+/* Kineticist Assistant Styles */
+
+.kineticist-fieldset {
+  border: 1px solid #999;
+  border-radius: 4px;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.kineticist-fieldset h4 {
+  margin: 0 0 12px 0;
+  color: #9c27b0;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.kineticist-section {
+  margin-bottom: 12px;
+}
+
+.kineticist-section label {
+  display: block;
+  margin-bottom: 4px;
+  color: #ddd;
+}
+
+/* Gates styling */
+.gates-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.gate-element {
+  transition: transform 0.2s ease;
+}
+
+.gate-element:hover {
+  transform: scale(1.1);
+}
+
+/* Blasts and Impulses styling */
+.blasts-row,
+.impulses-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.blast-item,
+.impulse-item {
+  position: relative;
+  transition: transform 0.2s ease;
+}
+
+.blast-item:hover,
+.impulse-item:hover {
+  transform: scale(1.1);
+}
+
+.blast-img,
+.impulse-img {
+  position: relative;
+  display: block;
+}
+
+.blast-img:active,
+.impulse-img:active {
+  transform: scale(0.95);
+}
+
+/* Button styling */
+.kineticist-buttons button {
+  padding: 8px 16px;
+  border: 1px solid #9c27b0;
+  background: linear-gradient(to bottom, rgba(156, 39, 176, 0.3), rgba(156, 39, 176, 0.15));
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.kineticist-buttons button:hover {
+  background: linear-gradient(to bottom, rgba(156, 39, 176, 0.5), rgba(156, 39, 176, 0.3));
+  border-color: #ba68c8;
+  box-shadow: 0 0 8px rgba(156, 39, 176, 0.5);
+}
+
+.kineticist-buttons button:active {
+  transform: scale(0.98);
+}
+
+.kineticist-buttons button i {
+  margin-right: 6px;
+}
+
+/* Animation indicator */
+.blast-item .fa-film,
+.impulse-item .fa-film {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  color: gold;
+  font-size: 10px;
+  text-shadow: 1px 1px 2px black;
+  pointer-events: none;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+/* Tooltip improvements */
+.kineticist-section [data-tooltip] {
+  position: relative;
+}
+
+/* Dialog styling improvements */
+.dialog.pf2e-kineticist-assistant {
+  border: 2px solid #9c27b0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .gates-row,
+  .blasts-row,
+  .impulses-row {
+    justify-content: center;
+  }
+
+  .kineticist-buttons {
+    flex-direction: column;
+  }
+
+  .kineticist-buttons button {
+    width: 100%;
+  }
+}

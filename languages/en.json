@@ -1,0 +1,38 @@
+{
+  "pf2e-kineticist-assistant": {
+    "ui": {
+      "title": "Kineticist Management",
+      "elementalGates": "Elemental Gates",
+      "noGatesSelected": "No elemental gates selected. Click 'Select Elements' below.",
+      "elementalBlasts": "Elemental Blasts",
+      "noBlasts": "No elemental blasts found",
+      "impulses": "Impulses",
+      "noImpulses": "No impulses found"
+    },
+    "buttons": {
+      "selectElements": "Select Elements",
+      "save": "Save",
+      "cancel": "Cancel",
+      "remove": "Remove"
+    },
+    "dialog": {
+      "elementSelector": {
+        "title": "Select Elemental Gates",
+        "description": "Select the elemental gates your Kineticist has access to:"
+      },
+      "macroBinding": {
+        "title": "Bind Animation Macro",
+        "description": "Select an animation macro to execute when using",
+        "selectMacro": "Animation Macro",
+        "noMacro": "No Macro",
+        "tip": "Tip",
+        "tipText": "The macro will execute when you left-click the ability icon. You can use this to trigger animations from modules like Sequencer or Automated Animations."
+      }
+    },
+    "notifications": {
+      "gatesSaved": "Elemental gates saved!",
+      "macroSaved": "Animation macro bound successfully!",
+      "macroRemoved": "Animation macro removed!"
+    }
+  }
+}

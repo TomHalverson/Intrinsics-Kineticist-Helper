@@ -1,0 +1,50 @@
+{
+  "id": "intrinsics-kineticist-helper",
+  "title": "Intrinsic's Kineticist Assistant",
+  "description": "A helper module for Pathfinder 2e Kineticists to manage elemental gates, impulses, and elemental blasts with animation macro support",
+  "version": "0.1.0",
+  "library": "false",
+  "compatibility": {
+    "minimum": 12,
+    "verified": 13
+  },
+  "authors": [
+    {
+      "name": "Intrinsic",
+      "discord": "intrinsic"
+    }
+  ],
+  "relationships": {
+    "systems": [
+      {
+        "id": "pf2e",
+        "type": "system",
+        "compatibility": {
+          "minimum": "6.0.0"
+        }
+      }
+    ],
+    "requires": [
+      {
+        "id": "socketlib",
+        "type": "module",
+        "manifest": "https://raw.githubusercontent.com/manuelVo/foundryvtt-socketlib/master/module.json"
+      }
+    ]
+  },
+  "esmodules": ["scripts/module.js"],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "languages/en.json"
+    }
+  ],
+  "socket": true,
+  "url": "https://github.com/TomHalverson/pf2e-kineticist-assistant",
+  "manifest": "",
+  "download": "",
+  "license": "LICENSE",
+  "readme": "README.md",
+  "styles": ["styles/kineticist.css"]
+}
