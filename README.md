@@ -1,6 +1,6 @@
 # PF2e Kineticist Assistant
 
-![Foundry v12](https://img.shields.io/badge/Foundry-v12-informational)
+![Foundry v12](https://img.shields.io/badge/Foundry-v13-informational)
 
 A FoundryVTT module for Pathfinder 2e that provides enhanced management and animation support for Kineticist characters.
 
