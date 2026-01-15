@@ -2,7 +2,7 @@ import { setupAPI } from "./api.js";
 import { setupHooks } from "./hooks.js";
 import { setupSocket } from "./socket.js";
 
-export const MODULE_ID = "pf2e-kineticist-assistant";
+export const MODULE_ID = "intrinsics-kineticist-helper";
 
 Hooks.once("init", async function () {
   console.log("PF2e Kineticist Assistant | Initializing");

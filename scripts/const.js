@@ -4,37 +4,37 @@ export const ELEMENTS = {
     name: "Air",
     icon: "systems/pf2e/icons/spells/aerial-form.webp",
     color: "#e3f2fd",
-    damageType: "electricity"
+    damageTypes: ["electricity"]
   },
   earth: {
     name: "Earth",
     icon: "systems/pf2e/icons/spells/stone-tell.webp",
     color: "#795548",
-    damageType: "bludgeoning"
+    damageTypes: ["bludgeoning"]
   },
   fire: {
     name: "Fire",
     icon: "systems/pf2e/icons/spells/fireball.webp",
     color: "#ff5722",
-    damageType: "fire"
+    damageTypes: ["fire"]
   },
   metal: {
     name: "Metal",
     icon: "systems/pf2e/icons/equipment/weapons/longsword.webp",
     color: "#9e9e9e",
-    damageType: "slashing"
+    damageTypes: ["electricity", "piercing", "slashing"]
   },
   water: {
     name: "Water",
     icon: "systems/pf2e/icons/spells/hydraulic-torrent.webp",
     color: "#2196f3",
-    damageType: "bludgeoning"
+    damageTypes: ["bludgeoning", "cold"]
   },
   wood: {
     name: "Wood",
     icon: "systems/pf2e/icons/spells/tree-shape.webp",
     color: "#4caf50",
-    damageType: "bludgeoning"
+    damageTypes: ["bludgeoning", "piercing"]
   }
 };
 
